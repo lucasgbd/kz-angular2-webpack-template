@@ -83,7 +83,8 @@ export class KzMaskCurrencyDirective implements ControlValueAccessor, OnInit {
   @HostListener('blur', ['$event']) 
   onBlur($event: any) {
     var pattern = '0' + this.separadorDecimal + '00';
-    if ($event.target.value.indexOf(pattern) === -1) {
+    
+    if ($event.target.value.indexOf(pattern) === -1 || ($event.target.value.length > pattern.length)) {
       return;
     }
     this.onChange('');
